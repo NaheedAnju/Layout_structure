@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rig Admin Dashboard</title>
+  <link rel="stylesheet" href="style_blue.css" />
+</head>
+<body>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="top-left">
+      <video src="DTLSlogo.mp4" autoplay muted loop class="logo-video"></video>
+    </div>
+    <div class="top-center">RIG ADMINISTRATOR DASHBOARD</div>
+    <div class="top-right" id="clock">--:--:--</div>
+  </div>
+
+  <!-- Main Section -->
+  <div class="main-container">
+    <!-- Camera Feeds -->
+    <div class="camera-grid" id="cameraGrid"></div>
+
+    <!-- Zone Alerts Panel -->
+    <div class="alert-panel">
+      <div class="alert-strip">
+        <h3>Zone alerts in last 24 hrs</h3>
+        <div id="alertCounts">Red: 5 Orange: 2 Yellow: 3 Green: 0</div>
+      </div>
+
+      <div class="alert-list">
+        <div class="alert red">
+          <img src="img_5.png" alt="Snapshot"/>
+          <span>[12:23] Unauthorized entry in Red Zone - Camera 2</span>
+        </div>
+        <div class="alert orange">
+          <img src="img_3.webp" alt="Snapshot"/>
+          <span>[11:02] Movement in Orange Zone - Camera 1</span>
+        </div>
+        <div class="alert yellow">
+          <img src="img_6.png" alt="Snapshot"/>
+          <span>[11:15] Yellow Zone entry detected - Camera 3</span>
+        </div>
+      </div>
+
+      <!-- Latest Violation Snapshot -->
+      <div class="latest-violation">
+        <h4>Latest Violation</h4>
+        <img src="img_5.png" alt="Latest Violation Snapshot" class="latest-img" />
+        <div class="latest-details">[12:23] - Camera 3</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Caution Strip -->
+  <div class="bottom-strip">
+    <marquee behavior="scroll" direction="left" scrollamount="6">
+      CAUTION!!! TO BE ACCESSED ONLY BY RIG ADMINISTRATOR.
+    </marquee>
+  </div>
+
+  <!-- Zone Modal -->
+  <div class="zone-modal" id="zoneModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3 id="modalTitle">Edit Zones</h3>
+      <div class="zone-selector">
+        <label for="zoneColor">Select Zone Color:</label>
+        <select id="zoneColor">
+          <option value="red">Red</option>
+          <option value="orange">Orange</option>
+          <option value="yellow">Yellow</option>
+          <option value="green">Green</option>
+        </select>
+      </div>
+      <canvas id="zoneCanvas" width="800" height="450"></canvas>
+      <div class="zone-controls">
+        <button onclick="clearZones()">Clear All Zones</button>
+        <button onclick="saveZones()">Save Zones</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script_blue.js"></script>
+</body>
+</html>
